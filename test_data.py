@@ -10,18 +10,18 @@ import os
 
 
 def get_data_by___file__():
-    bundle_dir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(__file__)))
+    bundle_dir = os.path.abspath(os.path.dirname(__file__)) if getattr(sys, 'frozen', False) else os.path.abspath(os.path.dirname(__file__))
     path_to_dat = os.path.join(bundle_dir, 'data', 'data.txt')
     return path_to_dat
 
 
 def get_data_by_executable():
-    bundle_dir = getattr(sys, '_MEIPASS', sys.executable)
+    bundle_dir = os.path.abspath(os.path.dirname(sys.executable)) if getattr(sys, 'frozen', False) else os.path.abspath(os.path.dirname(__file__))
     path_to_dat = os.path.join(bundle_dir, 'data', 'data.txt')
     return path_to_dat
 
 
 def get_data_by_argv():
-    bundle_dir = getattr(sys, '_MEIPASS', os.path.abspath(os.path.dirname(sys.argv[0])))
+    bundle_dir = os.path.abspath(os.path.dirname(sys.argv[0])) if getattr(sys, 'frozen', False) else os.path.abspath(os.path.dirname(__file__))
     path_to_dat = os.path.join(bundle_dir, 'data', 'data.txt')
     return path_to_dat
