@@ -9,15 +9,12 @@
 import sys, os
 import test_data
 
-import pathlib2
-
 def main():
     frozen = 'not'
     if getattr(sys, 'frozen', False):
         # we are running in a bundle
         frozen = 'ever so'
         bundle_dir = os.path.abspath(sys._MEIPASS)
-        print '='*10 ,sys._MEIPASS, os.path.abspath(sys._MEIPASS), pathlib2.Path(sys._MEIPASS).resolve()
     else:
         # we are running in a normal Python environment
         bundle_dir = os.path.dirname(os.path.abspath(__file__))
